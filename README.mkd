@@ -1,0 +1,8 @@
+### weibo2
+> A sina weibo SDK in golang.
+
+### Importing
+
+```
+import github.com/ibigbug/weibo2
+```
