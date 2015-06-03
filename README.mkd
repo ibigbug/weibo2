@@ -1,8 +1,13 @@
 ### weibo2
-> A sina weibo SDK in golang.
+
+a sina weibo SDK in golang.
+
+[![Build Status](https://secure.travis-ci.org/ibigbug/weibo2.png)](http://travis-ci.org/ibigbug/weibo2)
 
 ### Importing
 
-```
-import github.com/ibigbug/weibo2
-```
+    import github.com/ibigbug/weibo2
+
+### Documentation
+
+Visit the docs on [gopkgdoc](http://godoc.org/github.com/ibigbug/weibo2)
