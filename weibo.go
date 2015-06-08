@@ -77,6 +77,12 @@ func (c *Client) GetAccessToken(code string) (string, error) {
 	return string(body), nil
 }
 
+// Set the AccessToken
+
+func (c *Client) SetAccessToken(accessToken string) {
+	c.accessToken = accessToken
+}
+
 // Do GET request
 func (c *Client) Get(endpoint string, params url.Values) (*simplejson.Json, error) {
 	baseUrlString := fmt.Sprintf("%s/2/%s.json", OAUTH_SERVER, endpoint)
