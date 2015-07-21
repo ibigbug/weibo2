@@ -22,6 +22,11 @@ type Client struct {
 	accessToken string
 }
 
+type WeiboResponse struct {
+	Header *http.Header
+	Body   *simplejson.Json
+}
+
 // Get the authentication url you should redirect your user to.
 func (c *Client) GetAuthUrl() (string, error) {
 
@@ -84,7 +89,7 @@ func (c *Client) SetAccessToken(accessToken string) {
 }
 
 // Do GET request
-func (c *Client) Get(endpoint string, params url.Values) (*simplejson.Json, error) {
+func (c *Client) Get(endpoint string, params url.Values) (*WeiboResponse, error) {
 	baseUrlString := fmt.Sprintf("%s/2/%s.json", OAUTH_SERVER, endpoint)
 
 	baseUrl, _ := url.Parse(baseUrlString)
@@ -101,9 +106,14 @@ func (c *Client) Get(endpoint string, params url.Values) (*simplejson.Json, erro
 		return nil, error(err)
 	}
 
+	resp := new(WeiboResponse)
+
 	json, _ := simplejson.NewFromReader(res.Body)
 
-	return json, nil
+	resp.Header = &res.Header
+	resp.Body = json
+
+	return resp, nil
 }
 
 // Do POST request
